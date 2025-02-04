@@ -1,0 +1,20 @@
+cabal-version: 3.8
+name: cabal-sublib-bug
+version: 0
+
+library james-bond-007
+  default-language: Haskell2010
+  hs-source-dirs: src-a
+  build-depends: base <5
+  exposed-modules: A
+
+library
+  default-language: Haskell2010
+  hs-source-dirs: src-b
+  build-depends: base <5
+  exposed-modules: B
+
+  -- note: for private libraries this is not an issue,
+  -- as we cannot depend on them, the field below doesn't parse
+  -- public libraries couldnt' be used either, but we'll catch that too late!
+  -- build-depends: cabal-sublib-bug:james-bond-007
